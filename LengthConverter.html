@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<style>
+#panel, #flip {
+    padding: 5x;
+    text-align: cmer;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Assignment3 - Task1</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+/* Sub-task1:
+Create a function that converts the inputted length from 
+inch to cmimeter(cm) and vice versa: convertLength.
+The function should first display a prompt asking the user to select the length unit 
+to convert to inch/cm.
+Then the function should display another prompt asking the user to input the length to be converted to 
+inch/cm.
+The value entered should be validated to ensure it is a length.
+Then, the appropriate formula should be applied to the value to convert the
+length to the selected length unit. 
+Finally, an alert should be displayed indicating the
+length that they entered, and the converted length.
+The function should be called when the appropriate button(i.e., Convert)  is pressed.
+*/
+
+/* Sub-task2:
+Write jQuery code to implement the following:	
+If you perform a single click of your mouse on the "<flip>" element, it will show (slide down) the "panel" element.
+If you perform a double click of your mouse on the "<flip>" element, it will remove (slide up) the "panel" element.	
+
+Hints:	
+	The jQuery slideUp() method is used to slide up an element.
+	Syntax: $(selector).slideUp();
+	
+	The jQuery slideDown() method is used to slide down an element.
+	Syntax:	$(selector).slideDown();
+	
+*/
+	
+
+
+		function myFunction(){
+			var choice;
+			var length;
+			
+			choice = prompt("Please enter a length unit(1: To convert into inch; 2: to convert into cmimeter)","1");
+			length = prompt("Please enter a valid length value to be converted to inch/cmimeter","");
+
+			if ((!isNaN(length))&& choice == "1"&&length>=0) {
+			alert(length+" cmimeter converted to "+(length/2.54).toFixed(2)+" inch");
+		
+		}
+		else if((!isNaN(length)) && choice == "2"&&length>=0){
+			alert(length+" inch converted to "+(length*2.54).toFixed(2)+" cmimeter");
+		}
+		else if(choice != "2"&&choice != "1"){
+			alert("Please enter a valid opt");
+		}
+		else {
+			alert("Please enter a valid value");
+		}
+			}
+
+
+	$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideDown();
+  });
+  $("#flip").dblclick(function(){
+    $("#panel").slideUp();
+  });
+});
+
+
+</script>
+</head>
+	
+
+<body>
+<h3>Assignment3-Part1 - Length Conversion</h3>
+    <div id="flip" align="center">Length Conversion</div>
+    <div id="panel">This program converts from inch to cmimeter and vice versa</div>
+    
+    <table>      
+        	<tr>
+			    <td><input  name="btnConvert" id="btnConvert" value="Convert!" type="button" onclick = "myFunction()"></td>
+		    </tr>       
+   </table>
+</body>
+</html>
